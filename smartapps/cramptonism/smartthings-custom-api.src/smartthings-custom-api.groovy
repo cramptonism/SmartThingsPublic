@@ -16,9 +16,12 @@ definition(
   oauth: true)
 
 preferences {
+  section("Presence") {
+    input("presenceSensors", "capability.presenceSensor", title: "Presence Sensors", required: true, multiple: true)
+  }
   section("Climate") {
-    input("upstairsSensors", "capability.temperatureMeasurement", title: "Upstairs Sensors", multiple: true)
-    input("downstairsSensors", "capability.temperatureMeasurement", title: "Downstairs Sensors", multiple: true)
+    input("upstairsSensors", "capability.temperatureMeasurement", title: "Upstairs Sensors", required: true, multiple: true)
+    input("downstairsSensors", "capability.temperatureMeasurement", title: "Downstairs Sensors", required: true, multiple: true)
   }
 }
 
@@ -37,8 +40,13 @@ def updated() {}
 def getSummary() {
   [
     "mode": location.mode,
+    "presence": getPresence(),
     "climate": getClimate()
   ]
+}
+
+def getPresence() {
+  presenceSensors.collectEntries {[it.label, it.currentPresence]}
 }
 
 def getClimate() {
