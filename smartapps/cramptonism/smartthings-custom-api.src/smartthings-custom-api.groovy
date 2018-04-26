@@ -31,6 +31,11 @@ mappings {
       GET: "getSummary"
     ]
   }
+  path("/notify/:recipients/:message") {
+    action: [
+      GET: "sendNotifications"
+    ]
+  }
 }
 
 def installed() {}
@@ -72,4 +77,10 @@ def getClimate() {
     "upstairsTemperature": upstairsTemperature,
     "downstairsTemperature": downstairsTemperature
   ]
+}
+
+def sendNotifications() {
+  params.recipients.tokenize(",").each {
+    sendSms(it, params.message)
+  }
 }
