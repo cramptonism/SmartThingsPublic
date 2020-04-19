@@ -5,14 +5,14 @@
  */
 
 definition(
-  name: "SmartThings Custom API",
+  name: "Black Nugget Window Monitor",
   namespace: "cramptonism",
   author: "Andrew Crampton",
-  description: "Custom API for home automation",
+  description: "Monitors outside versus inside temperatures and sends notifications if windows should be opened or closed.",
   category: "Convenience",
-  iconUrl: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience.png",
-  iconX2Url: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience@2x.png",
-  iconX3Url: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience@2x.png",
+  iconUrl: "http://truello.com/smart/static/window.png",
+  iconX2Url: "http://truello.com/smart/static/window@2x.png",
+  iconX3Url: "http://truello.com/smart/static/window@3x.png",
   oauth: true)
 
 preferences {
